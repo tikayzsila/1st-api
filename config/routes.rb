@@ -1,6 +1,10 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# можно использовать метод scope вместо namespace, но затем по умолчанию он будет искать UsersController и PostsController внутри каталога controllers, а не внутри controllers/api/v1
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  namespace 'api' do
+    namespace 'v1' do
+      resources :posts
+      resources :users
+    end
+  end
 end
